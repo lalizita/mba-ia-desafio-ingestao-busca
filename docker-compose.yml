@@ -7,7 +7,7 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: rag
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -25,7 +25,7 @@ services:
     entrypoint: ["/bin/sh", "-c"]
     command: >
       PGPASSWORD=postgres
-      psql "postgresql://postgres@postgres:5432/rag" -v ON_ERROR_STOP=1
+      psql "postgresql://postgres@postgres:5433/rag" -v ON_ERROR_STOP=1
       -c "CREATE EXTENSION IF NOT EXISTS vector;"
     restart: "no"
 
