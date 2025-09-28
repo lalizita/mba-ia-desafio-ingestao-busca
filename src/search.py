@@ -19,6 +19,7 @@ for var in ["DATABASE_URL", "PG_VECTOR_COLLECTION_NAME", "GOOGLE_API_KEY"]:
     if not os.getenv(var):
         raise RuntimeError(f"A variável de ambiente {var} não foi definida.")
 
+# @DUVIDA AQUI: Por que preciso fazer embedding aqui de novo? Não bastaria usar o conteúdo criado na ingestão?
 embeddings = GoogleGenerativeAIEmbeddings(model=GOOGLE_EMBEDDING_MODEL)
 vector_store = PGVector(
     connection=DATABASE_URL,

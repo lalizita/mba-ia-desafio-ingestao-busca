@@ -19,14 +19,6 @@ for var in ["PDF_PATH", "DATABASE_URL", "PG_VECTOR_COLLECTION_NAME", "GOOGLE_API
 
 
 def ingest_pdf() -> None:
-    """
-    Carrega um documento PDF, o divide em partes (chunks), gera os embeddings
-    e os armazena em um banco de dados PGVector.
-
-    O processo é idempotente: a coleção existente é apagada antes da nova ingestão
-    para evitar duplicatas e garantir que o banco de dados reflita apenas o
-    conteúdo atual do PDF.
-    """
     print(f"Iniciando a ingestão do PDF: {PDF_PATH}")
 
     loader = PyPDFLoader(PDF_PATH)
